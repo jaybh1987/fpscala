@@ -10,6 +10,8 @@ scalaVersion := "2.13.6"
 libraryDependencies += guice
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test
 
+libraryDependencies += "org.json4s" %% "json4s-native" % "4.0.3"
+
 
 
 
