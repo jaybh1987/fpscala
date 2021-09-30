@@ -1,0 +1,57 @@
+package Books.FPScalaManning.Chapter13
+import Books.FPScalaManning.Chapter7.Monad
+import scala.io.StdIn.readLine
+
+
+
+  handle external effects like
+  reading from databases ,
+  writing to files.
+
+
+  we will develop a monad for I/O that will allow us to handle such external
+  effects in a purely functional way.
+
+  important distinction between effect and side effects.
+
+  IO monad provide straightforward way
+  of embedding imperative programming with I/O effects in a pure program while
+  maintaining referential transparancy.
+
+  it clearly separates effectfull code from the rest of the program.
+
+
+  key technique to deal with external effects.
+
+
+    def contest(p1: Player, p2: Player): Unit = if(p1.score > p2.score) {
+      println(s"${p1.name} is the winner!")
+    } else if(p2.score > p1.score) {
+      println(s"${p2.name} is the winner!")
+    } else println("It's a draw.")
+
+    Here pure login and IO code couples.
+    lets factor the pure login in other function.
+
+
+    formalize insight.
+
+    Giving an impure function f of type A => B
+    we split f into two functions.
+
+    a pure function of type A => D , where D is some description of result of f.
+    an impure function of type D => B , which can be thought of as an interpreter of these descriptions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
