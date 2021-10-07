@@ -100,15 +100,15 @@ object Player {
     }
   }
 
-  object IO extends Monad[IO] {
-    def unit[A](a: => A): IO[A] = new IO[A] { def run = a }
+//  object IO extends Monad[IO] {
+//    def unit[A](a: => A): IO[A] = new IO[A] { def run = a }
+//
+//    def flatMap[A, B](fa: IO[A])(f: A => IO[B]): IO[B] = fa.flatMap(f)
+//
+//    def apply[A](a: => A): IO[A] = unit(a)
+//  }
 
-    def flatMap[A, B](fa: IO[A])(f: A => IO[B]): IO[B] = fa.flatMap(f)
-
-    def apply[A](a: => A): IO[A] = unit(a)
-  }
-
-  def ReadLine: IO[String] = IO { readLine }
+//  def ReadLine: IO[String] = IO { readLine }
 }
 
 

@@ -1,10 +1,10 @@
 package Books.Cookbook
 
-import org.json4s._
-import org.json4s.jackson.JsonMethods._
-import org.json4s.JsonDSL._
-import org.json4s.JsonDSL.WithDouble._
-import org.json4s.JsonDSL.WithBigDecimal._
+//import org.json4s._
+//import org.json4s.jackson.JsonMethods._
+//import org.json4s.JsonDSL._
+//import org.json4s.JsonDSL.WithDouble._
+//import org.json4s.JsonDSL.WithBigDecimal._
 
 //final case class Failed[A](val exception: Exception) extends Attempt[A] {
 //  isSuccess = false
