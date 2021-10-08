@@ -1,4 +1,6 @@
-package algo.equilibrium;object Equilb {
+package algo.equilibrium;
+
+object Equilb {
 
 
         def compareFirst(l: List[Int]): Int = l match {
