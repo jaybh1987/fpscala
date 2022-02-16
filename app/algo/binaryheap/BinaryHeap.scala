@@ -45,24 +45,21 @@ object BinaryHeap extends App{
 
   def insert(elm: Int): BinaryHeap.type = {
     if(size >= maxSize) {
-      print("Heap is Full")
+      println("Heap is FULL!")
       this
     } else {
-      print("size = " + size)
       heap(size) = elm
       size+=1
-      var current = size
-      print(s"current " + current)
+      var current = if(size == maxSize) { maxSize - 1 } else size
       while(heap(current) < heap(parentNode(current))) {
           swap(current, parentNode(current))
           current = parentNode(current)
       }
-
       this
     }
   }
 
-  apply(3).insert(5).insert(10).insert(23)
+  apply(3).insert(5).insert(10).insert(23).insert(44)
 
   heap.foreach(println(_))
 
