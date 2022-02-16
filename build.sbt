@@ -13,7 +13,10 @@ libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0
 libraryDependencies += "org.json4s" %% "json4s-native" % "4.0.3"
 
 
-
+import com.typesafe.sbt.packager.docker.DockerChmodType
+import com.typesafe.sbt.packager.docker.DockerPermissionStrategy
+dockerChmodType := DockerChmodType.UserGroupWriteExecute
+dockerPermissionStrategy := DockerPermissionStrategy.CopyChown
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "com.example.controllers._"
