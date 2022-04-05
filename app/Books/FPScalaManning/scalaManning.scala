@@ -1,24 +1,18 @@
 package Books.FPScalaManning
 
 object ScalaManning {
-
   //monomorphic function to find a string in array.
   def findFirst(ss: Array[String], key: String): Int = {
-    def loop(n: Int): Int = {
-
-      if(n >= ss.length)  -1
+    def loop(n: Int): Int = if(n >= ss.length)  -1
       else if( ss(n) == key) n
       else loop(n + 1)
-    }
     loop(0)
   }
-
-  //polymorphic function to find a   string in array.
+  //polymorphic function to find a string in array.
   def findFirst[A](ss: Array[A], p: A => Boolean): Int = {
-
     def loop(n: Int): Int = {
       if(n >= ss.length) -1
-      else if( p(ss(n)) ) n
+      else if(p(ss(n))) n
       else loop(n + 1)
     }
     loop(0)
@@ -26,14 +20,7 @@ object ScalaManning {
 
 
   def fun(x: Int): Int = {
-
-    def loop(x: Int,fst: Int, snd: Int ): Int = {
-      if(x <= 0) {
-        fst     
-      } else {
-        loop(x - 1, snd, fst + snd)
-      }
-    }
+    def loop(x: Int,fst: Int, snd: Int ): Int = if(x <= 0) fst else loop(x - 1, snd, fst + snd)
     loop(x, 0, 1)
   }
 
@@ -49,39 +36,4 @@ object ScalaManning {
     }
     loop(0)
   }
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

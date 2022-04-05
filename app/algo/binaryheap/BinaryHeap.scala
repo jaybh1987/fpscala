@@ -1,7 +1,12 @@
 package algo.binaryheap
 
+import scala.annotation.tailrec
+
 /*
-* Reference Link: https://www.geeksforgeeks.org/min-heap-in-java/
+* Reference Link:
+*   https://www.geeksforgeeks.org/min-heap-in-java/
+*   https://selcote.medium.com/how-to-implement-a-binary-heap-in-java-9bfcf3b9a947
+*
 * */
 
 /*
@@ -18,73 +23,97 @@ package algo.binaryheap
 * */
 
 
-object BinaryHeap extends App{
+object TestFold {
 
-  var heap: Array[Int] = Array.empty[Int]
-  var size: Int = 0
-  var maxSize: Int = 0
 
-  def parentNode(pos: Int): Int = pos - 1 / 2
+  def fun(upto: Int): Unit = {
 
-  def leftChild(pos: Int): Int = 2 * pos
-
-  def rightChild(pos: Int): Int = (2 * pos) + 1
-
-  def apply(size: Int): BinaryHeap.type = {
-    maxSize = size
-    heap = new Array[Int](size)
-    this
-  }
-
-  def swap(current: Int, parentCurrent: Int): BinaryHeap.type  = {
-    var temp = heap(current)
-    heap(current) = heap(parentCurrent)
-    heap(parentCurrent) = temp
-    this
-  }
-
-  def insert(elm: Int): BinaryHeap.type = {
-    if(size >= maxSize) {
-      println("Heap is FULL!")
-      this
-    } else {
-      heap(size) = elm
-      size+=1
-      var current = if(size == maxSize) { maxSize - 1 } else size
-      while(heap(current) < heap(parentNode(current))) {
-          swap(current, parentNode(current))
-          current = parentNode(current)
+    def loop(fst: Int, snd: Int): Unit = {
+      if(snd > upto) {
+        print(" End")
+      } else {
+        print(s"$fst , ")
+        loop(snd, fst + snd)
       }
-      this
+    }
+
+    loop(0, 1)
+  }
+
+  import scala.collection.mutable.ArrayBuffer
+  def fib(n: Int): Int = if( n <= 1) n else fib(n - 1) + fib(n - 2)
+
+  def fun2(x: Int): Unit = {
+    var f : ArrayBuffer[Int] = ArrayBuffer.empty
+      f.update(0, 0)
+    for(i <- 2 until x) {
+      f(i) = f(i - 1) + f(i - 2)
+      print(f(i))
     }
   }
 
-  apply(3).insert(5).insert(10).insert(23).insert(44)
-
-  heap.foreach(println(_))
+  @tailrec
+  def map[A, B](l: List[A])(f: A => B)(ls: List[B] = Nil) : List[B] = {
+    l match {
+      case h :: t => map(t)(f)(f(h) +: ls)
+      case Nil => ls
+    }
+  }
 
 }
 
+object BinaryHeap extends App{
 
+  var heap : Array[Int] = Array.empty[Int]
+  var size: Int = 0
+  var max: Int = 0
 
+  def isFull(): Boolean = size == max
 
+  def getParent(index: Int): Int = (index - 1) / 2
 
+  def apply(capacity: Int) = {
+    max = capacity
+    heap = new Array[Int](capacity)
+    this
+  }
 
+  def insert(elm: Int) = {
 
+    if(size >= max) {
+      println("HEAP is full!")
+    } else {
+      heap(size) = elm
+      heapify(size)
+      size+=1
+    }
+    this
+  }
 
+  def heapify(index: Int): Unit = {
 
+    var pos = index
+    var newValue = heap(index)
 
+    while(pos > 0 && newValue > heap(getParent(pos))) {
+      heap(pos) = heap(getParent(pos))
+      pos = getParent(pos)
+    }
 
+    heap(pos) = newValue
+  }
 
+  apply(7)
+    .insert(500)
+    .insert(1)
+    .insert(10)
+    .insert(800)
+    .insert(90)
+    .insert(25)
+    .insert(18)
 
-
-
-
-
-
-
-
-
+  heap.foreach( println(_))
+}
 
 
 
